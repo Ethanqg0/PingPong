@@ -1,5 +1,10 @@
+/* 
+    We utilize canvas in HTML to create a game board that we can draw on.
+    Attributes are public and we access them within javascript to manipulate the canvas
+*/
+
 const gameBoard = document.querySelector("#gameBoard");
-const ctx = gameBoard.getContext("2d");
+const ctx = gameBoard.getContext("2d"); // built-in method return a drawing context on the canvas
 const scoreText = document.querySelector("#scoreText");
 const resetBtn = document.querySelector("#resetBtn");
 const gameWidth = gameBoard.width;

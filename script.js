@@ -21,6 +21,8 @@ let ballYDirection = 0;
 let player1Score = 0;
 let player2Score = 0;
 
+
+
 let paddle1 = {
   width: 25,
   height: 100,
@@ -37,9 +39,6 @@ let paddle2 = {
 
 window.addEventListener('keydown', changeDirection);
 resetBtn.addEventListener('click', resetGame);
-
-gameStart();
-drawPaddles();
 
 function gameStart() {
   createBall();
@@ -193,3 +192,7 @@ function resetGame() {
   clearInterval(intervalID);
   gameStart();
 }
+
+// game handler
+gameStart();
+drawPaddles();

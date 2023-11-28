@@ -1,8 +1,3 @@
-/* 
-    We utilize canvas in HTML to create a game board that we can draw on.
-    Attributes are public and we access them within javascript to manipulate the canvas
-*/
-
 const gameBoard = document.querySelector('#gameBoard');
 const ctx = gameBoard.getContext('2d'); // built-in method return a drawing context on the canvas
 const scoreText = document.querySelector('#scoreText');
@@ -26,14 +21,14 @@ let ballYDirection = 0;
 let player1Score = 0;
 let player2Score = 0;
 
-const paddle1 = {
+let paddle1 = {
   width: 25,
   height: 100,
   x: 0,
   y: 0,
 };
 
-const paddle2 = {
+let paddle2 = {
   width: 25,
   height: 100,
   x: gameWidth - 25,
@@ -77,12 +72,12 @@ function drawPaddles() {
 }
 function createBall() {
   ballSpeed = 0.5;
-  if (Math.round(Math.random()) == 1) {
+  if (Math.round(Math.random()) === 1) {
     ballXDirection = 1;
   } else {
     ballXDirection = -1;
   }
-  if (Math.round(Math.random()) == 1) {
+  if (Math.round(Math.random()) === 1) {
     ballYDirection = 1;
   } else {
     ballYDirection = -1;
@@ -95,7 +90,7 @@ function moveBall() {
   ballX += ballSpeed * ballXDirection;
   ballY += ballSpeed * ballYDirection;
 }
-function drawBall(ballX, ballY) {
+function drawBall() {
   ctx.fillStyle = ballColor;
   ctx.strokeStyle = ballBorderColor;
   ctx.lineWidth = 2;
@@ -164,6 +159,8 @@ function changeDirection(event) {
         paddle2.y += paddleSpeed;
       }
       break;
+    default:
+      break;
   }
 }
 function updateScore() {
@@ -173,20 +170,21 @@ function resetGame() {
   player1Score = 0;
   player2Score = 0;
 
-  const paddle1 = {
+  paddle1 = {
     width: 25,
     height: 100,
     x: 0,
     y: 0,
   };
 
-  const paddle2 = {
+  paddle2 = {
     width: 25,
     height: 100,
     x: gameWidth - 25,
     y: gameWidth - 100,
   };
-  ballSpeed = 1;
+
+  ballSpeed = 0.5;
   ballX = 0;
   ballY = 0;
   ballXDirection = 0;
